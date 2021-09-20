@@ -18,6 +18,24 @@ function App() {
   const [box, setBox] = useState({})
   const [route, setRoute] = useState('signin')
   const [signin, setSignin] = useState(false)
+  const [user, setUser] = useState({
+    user: {
+      id: '',
+      name: '',
+      email: '',
+      entries: 0,
+      joined: ''
+    }
+  })
+  const loadUser = (data) => {
+    setUser({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    }})
+  } 
   const onInputChange = (e) => {
     setInput(e.target.value)
   }
@@ -79,7 +97,7 @@ function App() {
       : (route === 'signin'
       ?
       <Signin onRouteChange={onRouteChange}/> :
-      <Register/>
+      <Register onRouteChange={onRouteChange} loadUser={loadUser}/>
       ) 
       }
     </div>
