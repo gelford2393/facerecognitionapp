@@ -79,6 +79,7 @@ class App extends Component {
               entries:count
             }))
           })
+          .catch(err => console.log(err))
       }
       this.displayFaceBox(this.calculateFaceLoc(res))
     })

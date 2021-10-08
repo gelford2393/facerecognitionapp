@@ -27,11 +27,12 @@ const Register = (props) => {
         })
         .then(res => res.json())
         .then(user => {
-            if (user) {
+            if (user.id) {
                 props.loadUser(user)
                 props.onRouteChange('home')
             }
         })
+        .catch(err => (err))
     }
     return (
         <div>
